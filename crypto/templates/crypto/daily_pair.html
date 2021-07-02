@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %} daily pair {% endblock title %}
+
+{% block path %}
+
+<h4 class="display-3 fw-bold text-white">daily pair</h4>
+{% endblock path %}
+
+{% block content %}
+{% load humanize %}
+<div class="container my-3">
+    <div class="row">
+          {% for a in daily.Data.Data  %}
+        <div class="col-md-3 my-2">
+            <div class="card">
+                <div class="card-body">
+                  <p class="card-text"> open : {{a.open}}</p>
+                  <p class="card-text"> close :{{a.close}}</p>
+                  <p class="card-text"> high : {{a.high}}</p>
+                  <p class="card-text"> low : {{a.low}}</p>
+                <p class="card-text"> time : {{a.time}}</p>
+
+                </div>
+              </div>
+        </div>
+        {% endfor %} 
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+
+{% comment %} var ctx = document.getElementById('chart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{labels}},
+        datasets: [{
+            label: '# of Votes',
+            data: {{datas}},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+}); {% endcomment %}
+</script>
+
+{% endblock script %}
+

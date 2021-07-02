@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} news {% endblock title %}
+
+{% block path %}
+
+<h4 class="display-3 fw-bold text-white">News</h4>
+{% endblock path %}
+
+{% block content %}
+<div class="container my-3">
+    <div class="row">
+        {% for a in api.Data  %}
+        <div class="col-md-3 my-2">
+            <div class="card">
+                <img src="{{a.imageurl}}" class="card-img-top" alt="{{a.title}}">
+                <div class="card-body">
+                  <a href="{{a.url}}"><h5 class="card-title h5">{{a.title|truncatewords:5}}</h5></a>
+                  <p class="card-text">{{a.body|truncatewords:10}}</p>
+                  <a href="{{a.url}}" class="btn btn-primary">{{a.source}}</a>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+

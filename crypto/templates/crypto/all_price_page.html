@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} all price {% endblock title %}
+
+
+{% block path %}
+
+<h4 class="display-3 fw-bold text-white">prices crypto</h4>
+{% endblock path %}
+{% block content %}
+<div class="container my-3">
+    <div class="row">
+    <table class="table text-center" id= 'myTable'>
+  <thead>
+    <tr>
+    <th scope="col">image</th>
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">open day</th>
+      <th scope="col">high day</th>
+       <th scope="col">low day</th>
+       <th scope="col">mktcap</th>
+       {% comment %} <th scope="col">image</th> {% endcomment %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for p,v in price.DISPLAY.items %}
+  <tr class= 'text-center'>
+<td scope="row"> <img src="https://cryptocompare.com/{{v.USD.IMAGEURL}}" alt="" align= 'left' class= 'img-fulid' height= '50px' width= '50px'> </td>
+<td> {{p}}</td>
+<td>{{v.USD.PRICE}}</td>
+<td>{{v.USD.OPENDAY}}</td>
+<td>{{v.USD.HIGHDAY}}</td>
+<td>{{v.USD.LOWDAY}}</td>
+<td>{{v.USD.MKTCAP}}</td>
+</tr>
+{% endfor %}
+  </tbody>
+</table>
+    </div>
+</div>
+
+{% endblock content %}
+

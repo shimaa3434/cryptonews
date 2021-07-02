@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} price {{q}}{% endblock title %}
+
+{%block content%}
+
+<div class="container my-3">
+    <div class="row">
+    {% if no %}
+    {{no}}
+    {% else %}
+    {% if q_data.Response %}
+   <p class = 'fw-bold'> sorry, that <span class="text-danger">{{q}}</span> doesn't exist, please try again..... </p>
+    {%else%}
+    <h1>{{q}}</h1>
+  {% for p,v in q_data.DISPLAY.items %}
+        <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="https://cryptocompare.com/{{v.USD.IMAGEURL}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                    <p class="card-text"> <span  class= 'fw-bold fs-2'>{{q}} price : </span> {{v.USD.PRICE}}</p>
+                    <p class="card-text"><span class= 'fw-bold fs-2'>{{q}} open day : </span> {{v.USD.OPENDAY}}</p>
+                    <p class="card-text"><span class= 'fw-bold fs-2'>{{q}} 24h high : </span> {{v.USD.HIGHDAY}}</p>
+                    <p class="card-text"><span class= 'fw-bold fs-2'>{{q}} 24h low : </span> {{v.USD.LOWDAY}}</p>
+                    <p class="card-text"><span class= 'fw-bold fs-2'>{{q}} market cap : </span> {{v.USD.MKTCAP}}</p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+{% endfor %}
+    {% endif %}
+    
+    {% endif %}
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
